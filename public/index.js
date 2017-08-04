@@ -53,7 +53,7 @@ var populateList = function(songs) {
 };
 
 var showList = function(song) {
-  var ul = document.getElementById("beer-list");
+  var ul = document.getElementById("song-list");
   ul.innerHTML = '';
   var listItem1 = document.createElement("ul");
   listItem1.innerText = "Title: " + song.track_name 
