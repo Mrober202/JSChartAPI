@@ -39,7 +39,7 @@ var createListItem = function(song) {
   return songId + songName + songArtist;
 }
 
-var populateList = function(songs) {
+var populateOptions = function(songs) {
   var select = document.querySelector("select");
   songs.forEach(function(song) {
     var li = document.createElement("option");
