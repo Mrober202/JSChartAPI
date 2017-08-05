@@ -19,31 +19,11 @@ var requestComplete = function() {
   populateChart(songs);
 };
 
-var populateChart = function(songs) {
-  var ul = document.getElementById("chart-songs");
-  while(ul.firstChild) {
-    ul.removeChild(ul.firstChild);
-  }
-  song.forEach(function(song) {
-    var li = createListItem(song);
-    ul.appendChild(li);
-  })
-}
-var createListItem = function(song) {
-  var songId = document.createElement("li");
-  songId.innerText = song[selectedIndex];
-  var songName = document.createElement("li");
-  songName.innerText = song.track_name;
-  var songArtist = document.createElement("li");
-  songArtist.innerText = song.artist_name;
-  return songId + songName + songArtist;
-}
-
 var populateOptions = function(songs) {
   var select = document.querySelector("select");
   songs.forEach(function(song) {
     var li = document.createElement("option");
-    li.text = song.name;
+    li.text = song.track_name + " by " + song.artist_name;
     select.appendChild(li);
   })
   select.addEventListener("change", function(){
@@ -54,7 +34,7 @@ var populateOptions = function(songs) {
 
 var showList = function(song) {
   var ul = document.getElementById("song-list");
-  ul.innerHTML = '';
+  // ul.innerHTML = '';
   var listItem1 = document.createElement("ul");
   listItem1.innerText = "Title: " + song.track_name 
   var listItem2 = document.createElement("ul");
@@ -69,6 +49,26 @@ var showList = function(song) {
   ul.appendChild(listItem2);
   ul.appendChild(listItem3);
   ul.appendChild(listItem4);
+  }
+
+  var populateChart = function(songs) {
+    var ul = document.getElementById("chart-songs");
+    while(ul.firstChild) {
+      ul.removeChild(ul.firstChild);
+    }
+    songs.forEach(function(song) {
+      var li = createListItem(song);
+      ul.appendChild(li);
+    })
+  }
+  var createListItem = function(song) {
+    var songId = document.createElement("li");
+    songId.innerText = song[selectedIndex];
+    var songName = document.createElement("li");
+    songName.innerText = song.track_name;
+    var songArtist = document.createElement("li");
+    songArtist.innerText = song.artist_name;
+    return songId + songName + songArtist;
   }
 
 window.addEventListener('load', app);
